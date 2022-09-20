@@ -15,7 +15,7 @@ function promptUser(event) {
   // I set up a loop for the pasword length just incase it wsasnt met. i used isNAN instead of writing out is not a number.
   var passLength = 0;
   while (passLength < 8 || passLength > 128 || isNaN(passLength)) {
-    var passPrompt = window.prompt("How long do you want your password to be ?");
+    var passPrompt = window.prompt("Choose a password length between 8-128");
     passLength = parseInt(passPrompt);
   
 
