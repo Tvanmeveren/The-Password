@@ -2,27 +2,30 @@
 var generateBtn = document.querySelector("#generate");
 var outputBox = document.querySelector("#password");
 
-// Add event listener to handle button click
+// This is the eventlistener for the button clicking
+
 generateBtn.addEventListener("click", function (event) {
   const userPrompt = promptUser();
- //sets to the function promptUser its secure
+ // makes sure the password is secure
   outputBox.innerText = generatePassword(userPrompt);
 });
 
-// Write password to the #password input
+
 function promptUser(event) {
-  // added a while to set a loop if passLen isnt't met
+  // I set up a loop for the pasword length just incase it wsasnt met. i used isNAN instead of writing out is not a number.
   var passLength = 0;
   while (passLength < 8 || passLength > 128 || isNaN(passLength)) {
     var passPrompt = window.prompt("How long do you want your password to be ?");
     passLength = parseInt(passPrompt);
-   //isNaN for if the length of password is canceled
+  
+
+
     if (passLength < 8 || passLength > 128 || isNaN(passLength)) {
       window.alert(" Password must be between 8 to 128 charecters");
     }
   }
 
-  // set extra prompt for extra questions
+  // This is where the extra questions/promps are.
   const doNumbers = window.confirm("Do you want to include numbers?");
   const doUpper = window.confirm("Do you want  uppercase letters?");
   const doLow = window.confirm("Do you want lowercase  letters?");
@@ -35,10 +38,11 @@ function promptUser(event) {
 function generatePassword(userPrompt) {
 
   const charPool = [];
-  //sets all varibale from the previous results of the function
+  //This is where i Set the vars
   const { doNumbers, doSymbols, doLow, doUpper, passLength } = userPrompt;
   const number = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-  //house the finished text
+
+  // this is where I output the text
   const outputText = [];
 
   const upperLetters = [
@@ -132,11 +136,11 @@ function generatePassword(userPrompt) {
     window.alert("Please choose a character type");
     return "";
   }
-  //  randomizes all the all outputs
+  //  This is where the output of the statement is
   for (let index = 0; index < passLength; index++) {
     let randomChar = charPool[Math.floor(Math.random() * charPool.length)];
     outputText.push(randomChar);
   }
-  // without this return it would be undefined
+  // the undefined return. 
   return outputText.join("");
 }
