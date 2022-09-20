@@ -11,7 +11,7 @@ generateBtn.addEventListener("click", function (event) {
 });
 
 
-function promptUser(event) {
+function promptUser() {
   // I set up a loop for the pasword length just incase it wsasnt met. i used isNAN instead of writing out is not a number.
   var passLength = 0;
   while (passLength < 8 || passLength > 128 || isNaN(passLength)) {
